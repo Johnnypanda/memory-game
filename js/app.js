@@ -1,15 +1,22 @@
 /*
  * Create a list that holds all of your cards
  */
-
-
+var card = document.querySelectorAll(".card"),
+	deck = document.querySelector(".deck");
+var cards = [...card];
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
-
+function displayCards(){
+	cards = shuffle(cards);
+	for(var i = 0; i < cards.length; i++ ) {
+		deck.appendChild(cards[i]);
+		cards[i].addEventListener("click", revealCards);
+	}
+}
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -36,3 +43,12 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+function revealCards(){
+	this.classList.toggle("open");
+	this.classList.toggle("show");
+}
+
+function compareCards() {
+	
+}
