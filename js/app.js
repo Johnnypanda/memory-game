@@ -1,22 +1,23 @@
 /*
  * Create a list that holds all of your cards
  */
-var card = document.querySelectorAll(".card"),
-	deck = document.querySelector(".deck");
-var cards = [...card];
+const deck = document.querySelector(".deck");
+let cardItem = document.getElementsByClassName("card");
+let cards = [...cardItem];
+let temp = [];
+
+document.addEventListener("DOMContentLoaded", startGame);
+
+for(let i = 0; i < cards.length; i++) {
+	cards[i].addEventListener("click", revealCard);
+	cards[i].addEventListener("click", compareCard);
+}
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
-function displayCards(){
-	cards = shuffle(cards);
-	for(var i = 0; i < cards.length; i++ ) {
-		deck.appendChild(cards[i]);
-		cards[i].addEventListener("click", revealCards);
-	}
-}
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -31,8 +32,6 @@ function shuffle(array) {
 
     return array;
 }
-
-
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -44,11 +43,57 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-function revealCards(){
-	this.classList.toggle("open");
-	this.classList.toggle("show");
+// function startGame(){
+// 	cards = shuffle(cards);
+// 	console.log(cards);
+//    for (let i = 0; i < cards.length; i++){
+//    	  cards[i].classList.remove("open", "show", "match");
+//       [].forEach.call(cards, function(item){
+//          deck.appendChild(item);
+//       });
+//    }
+	
+// }
+
+function startGame() {
+	cards = shuffle(cards);
+	for(let i = 0; i < cards.length; i++){
+		deck.appendChild(cards[i]);
+	}
+} 
+
+
+function revealCard(){
+	this.classList.add("open", "show");
 }
 
-function compareCards() {
-	
+function compareCard(){
+	temp.push(this);
+	console.log(temp);
+	len = temp.length;
+	if(len === 2){
+		if(temp[0].innerHTML === temp[1].innerHTML){
+			match();
+		} else {
+			unmatch();
+		}
+	}
+}
+
+function match(){
+	temp[0].classList.add("match");
+	temp[1].classList.add("match");
+	temp[0].classList.remove("show", "open");
+	temp[1].classList.remove("show", "open");
+	temp = [];
+}
+
+function unmatch(){
+	temp[0].classList.add("unmatch");
+	temp[1].classList.add("unmatch");
+	setTimeout(function(){
+		temp[0].classList.remove("open", "show", "unmatch");
+		temp[1].classList.remove("open", "show", "unmatch");
+		temp = [];
+	}, 1100);
 }
