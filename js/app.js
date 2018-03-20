@@ -1,3 +1,5 @@
+//start game after the page is loaded and reset if the restart button was clicked
+document.addEventListener("DOMContentLoaded", startGame);
 //card deck variables
 const deck = document.querySelector(".deck");
 let cardItem = document.getElementsByClassName("card");
@@ -8,8 +10,7 @@ let matchedCards = document.getElementsByClassName("match");
 //counter and timer variables;
 const restartBtn = document.querySelector(".restart");
 const movesCounter = document.querySelector(".moves");
-let count = 0;
-let moves = 0;
+let count = 0, moves = 0, sec = 0, min = 0, interval;
 const timerDisplay = document.querySelector(".timer");
 //calls start game function on load
 startGame();
@@ -33,16 +34,19 @@ function shuffle(array) {
     return array;
 }
 
-//start game after the page is loaded and reset if the restart button was clicked
+
+// start game function
 function startGame() {
-	document.addEventListener("DOMContentLoaded", startGame);
-	restartBtn.addEventListener("click", startGame);
+	resetTimer();
+	resetCounter();
 	cards = shuffle(cards);
 	for(let i = 0; i < cards.length; i++){
 		cards[i].classList.remove("open", "show", "match", "disabled");
 		deck.appendChild(cards[i]);
 	}
 } 
+
+restartBtn.addEventListener("click", startGame);
 
 //comparison logic functions
 function revealCard(){
@@ -105,6 +109,33 @@ function counter(){
 	if(count % 2 === 0){
 		moves++;
 		movesCounter.innerHTML = moves;
+	} 
+
+	if(count == 1){
+		timer();
 	}
 }
 
+function resetCounter(){
+	count = 0;
+	moves = 0;
+	movesCounter.innerHTML = moves;
+}
+//time measurement function
+function timer(){
+    interval = setInterval(function(){
+        timerDisplay.innerHTML = `${min}m :${sec}s`;
+        sec++;
+        if(sec == 60){
+            min++;
+            sec=0;
+        }
+    },1000);
+}
+
+function resetTimer(){
+	clearInterval(interval);
+	sec = 0;
+	min = 0;
+	timerDisplay.innerHTML = `${min}m :${sec}s`;
+}
