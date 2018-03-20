@@ -1,20 +1,23 @@
 //start game after the page is loaded and reset if the restart button was clicked
 document.addEventListener("DOMContentLoaded", startGame);
-//card deck variables
+//selectors
 const deck = document.querySelector(".deck");
-let cardItem = document.getElementsByClassName("card");
-let cards = [...cardItem];
-//reveal functionality variables;
-let temp = [];
-let matchedCards = document.getElementsByClassName("match");
-//counter and timer variables;
+const cardItem = document.getElementsByClassName("card");
+const matchedCards = document.getElementsByClassName("match");
 const restartBtn = document.querySelector(".restart");
 const movesCounter = document.querySelector(".moves");
-let count = 0, moves = 0, sec = 0, min = 0, interval;
 const timerDisplay = document.querySelector(".timer");
+const starItem = document.getElementsByClassName("fa-star");
+let cards = [...cardItem];
+let stars = [...starItem];
+let temp = [];
+//counter and timer variables;
+let count = 0, moves = 0, sec = 0, min = 0, interval;
+
 //calls start game function on load
 startGame();
 //add event listeners to card elements
+//
 for(let i = 0; i < cards.length; i++) {
 	cards[i].addEventListener("click", revealCard);
 	cards[i].addEventListener("click", compareCard);
@@ -39,6 +42,7 @@ function shuffle(array) {
 function startGame() {
 	resetTimer();
 	resetCounter();
+	resetRating();
 	cards = shuffle(cards);
 	for(let i = 0; i < cards.length; i++){
 		cards[i].classList.remove("open", "show", "match", "disabled");
@@ -109,6 +113,15 @@ function counter(){
 	if(count % 2 === 0){
 		moves++;
 		movesCounter.innerHTML = moves;
+			//rate function
+			if(moves === 14){
+			console.log()
+			stars[0].style.color = "#333";
+		} else if(moves === 16){
+			stars[1].style.color = "#333";
+		} else if(moves === 20){
+			stars[2].style.color = "#333";
+		}
 	} 
 
 	if(count == 1){
@@ -138,4 +151,10 @@ function resetTimer(){
 	sec = 0;
 	min = 0;
 	timerDisplay.innerHTML = `${min}m :${sec}s`;
+}
+
+function resetRating(){
+	for(let i = 0; i < stars.length; i++){
+		stars[i].style.color = "#f4428f";
+	}
 }
