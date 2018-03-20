@@ -8,19 +8,21 @@ const restartBtn = document.querySelector(".restart");
 const movesCounter = document.querySelector(".moves");
 const timerDisplay = document.querySelector(".timer");
 const starItem = document.getElementsByClassName("fa-star");
+const starsContainer = document.querySelector(".stars");
+const modalWindow = document.querySelector(".modal");
+const finalTime = document.querySelector(".finalTime");
+const finalRating = document.querySelector(".finalRating");
+const finalBtn = document.querySelector(".btn");
 let cards = [...cardItem];
 let stars = [...starItem];
 let temp = [];
 //counter and timer variables;
 let count = 0, moves = 0, sec = 0, min = 0, interval;
-
-//calls start game function on load
-startGame();
 //add event listeners to card elements
-//
 for(let i = 0; i < cards.length; i++) {
 	cards[i].addEventListener("click", revealCard);
 	cards[i].addEventListener("click", compareCard);
+	cards[i].addEventListener("click", gameWin);
 }
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -43,6 +45,7 @@ function startGame() {
 	resetTimer();
 	resetCounter();
 	resetRating();
+	modalWindow.classList.remove("open");
 	cards = shuffle(cards);
 	for(let i = 0; i < cards.length; i++){
 		cards[i].classList.remove("open", "show", "match", "disabled");
@@ -51,7 +54,7 @@ function startGame() {
 } 
 
 restartBtn.addEventListener("click", startGame);
-
+finalBtn.addEventListener("click", startGame);
 //comparison logic functions
 function revealCard(){
 	this.classList.add("open", "show", "disabled");
@@ -69,7 +72,7 @@ function compareCard(){
 		}
 	}
 }
-
+//if cards match run following
 function match(){
 	temp[0].classList.add("match", "disabled");
 	temp[1].classList.add("match", "disabled");
@@ -77,7 +80,7 @@ function match(){
 	temp[1].classList.remove("show", "open");
 	temp = [];
 }
-
+//if cards don't match run following
 function unmatch(){
 	temp[0].classList.add("unmatch");
 	temp[1].classList.add("unmatch");
@@ -89,14 +92,14 @@ function unmatch(){
 		temp = [];
 	}, 1100);
 }
-
+//disabling function, prevents clicking on cards while comparison is in process
 function disable(){
 	//disable all cards during the time out
 	for(let i = 0; i < cards.length; i++){
 		cards[i].classList.add("disabled");
 	}
 }
-
+//enable function
 function enable(){
 	//enable all cards, except of matched if any
 	for(let i = 0; i < cards.length; i++){
@@ -137,7 +140,7 @@ function resetCounter(){
 //time measurement function
 function timer(){
     interval = setInterval(function(){
-        timerDisplay.innerHTML = `${min}m :${sec}s`;
+        timerDisplay.innerHTML = `Time: ${min}m :${sec}s`;
         sec++;
         if(sec == 60){
             min++;
@@ -150,11 +153,20 @@ function resetTimer(){
 	clearInterval(interval);
 	sec = 0;
 	min = 0;
-	timerDisplay.innerHTML = `${min}m :${sec}s`;
+	timerDisplay.innerHTML = `Time: ${min}m :${sec}s`;
 }
 
 function resetRating(){
 	for(let i = 0; i < stars.length; i++){
 		stars[i].style.color = "#f4428f";
+	}
+}
+
+function gameWin(){
+	if(matchedCards.length == 16){
+		modalWindow.classList.add("open");
+		clearInterval(interval);
+		finalRating.innerHTML = starsContainer.innerHTML;
+		finalTime.innerHTML = timerDisplay.innerHTML;
 	}
 }

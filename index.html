@@ -6,6 +6,8 @@
     <meta name="description" content="">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+<!--     <link rel="stylesheet"
+ 	 href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> -->
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
@@ -28,7 +30,7 @@
             <div class="restart">
         		<i class="fa fa-repeat"></i>
         	</div>
-        	<div class="timer">0m: 0s</div>
+        	<div class="timer">Time: 0m: 0s</div>
         </section>
 
         <ul class="deck">
@@ -82,6 +84,18 @@
             </li>
         </ul>
     </div>
+	
+	<div class="modal">
+		<div class="inner">
+			<div class="stats">
+				<h2>Congratulations, you won!</h2>
+				<p>Your score</p>
+				<div class="finalRating"></div>
+				<div class="finalTime"></div>
+				<p class="btn">Play again</p>
+			</div>
+		</div>
+	</div>
 
     <script src="js/app.js"></script>
 </body>
