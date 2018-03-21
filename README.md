@@ -1,5 +1,5 @@
 # Memory Game Project
-	[Memory game screen]: https://github.com/Johnnypanda/memory-game/blob/master/img/memory-game-screenshot.jpg "Memory game"
+![Alt text](https://github.com/Johnnypanda/memory-game/blob/master/img/memory-game-screenshot.jpg?raw=true "Title")
 
 
 ## How To Play
@@ -7,6 +7,7 @@ To play a game click on this [link](https://johnnypanda.github.io/memory-game/).
 
 ## Instructions
 Memory game is a simple game to test user's memory.
+
 1. To start a game flip a card by clicking on it.
 2. Flip another card to find a match.
 3. Find all matches to win the game.
