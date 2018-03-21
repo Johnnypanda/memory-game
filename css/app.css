@@ -38,12 +38,12 @@ h1 {
  */
 
 .deck {
-    width: 660px;
-    min-height: 680px;
+    width: 250px;
+    min-height: 260px;
     background: #FC5C7D;  /* fallback for old browsers */
 	background: -webkit-linear-gradient(to right, #6A82FB, #FC5C7D);  /* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(to right, #6A82FB, #FC5C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    padding: 35px;
+    padding: 25px;
     border-radius: 5px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
@@ -55,10 +55,10 @@ h1 {
 }
 
 .deck .card {
-    height: 130px;
-    width: 130px;
+    height: 45px;
+    width: 45px;
     background: #2e3d49;
-    font-size: 0;
+    font-size: 0px;
     color: #ffffff;
     border-radius: 5px;
     cursor: pointer;
@@ -83,13 +83,13 @@ h1 {
 }
 
 .deck .card.show {
-    font-size: 33px;
+    font-size: 15px;
 }
 
 .deck .card.match {
     cursor: default;
     background: #02ccba;
-    font-size: 33px;
+    font-size: 15px;
 	-webkit-animation-name: tada;
 	animation-name: tada;
 	-webkit-animation-duration: 1s;
@@ -101,7 +101,7 @@ h1 {
 .deck .card.unmatch {
     cursor: default;
     background: #f45942;
-    font-size: 33px;
+    font-size: 15px;
 	-webkit-animation-name: shake;
 	animation-name: shake;
 	-webkit-animation-duration: 0.7s;
@@ -120,9 +120,10 @@ h1 {
  */
 
 .score-panel {
-    text-align: left;
-    width: 345px;
+    text-align: center;
+    width: 250px;
     margin-bottom: 10px;
+    font-size: 15px;
 }
 
 .score-panel .stars {
@@ -139,12 +140,12 @@ h1 {
 }
 
 .score-panel .restart {
-    float: right;
+    float: none;
     cursor: pointer;
 }
 
 .score-panel .timer {
-	float: right;
+	float: none;
 	display: inline-block;
 	padding-right: 15px;
 }
@@ -180,6 +181,7 @@ h1 {
 	margin: 0 auto;
 	height: 300px;
 	border-radius: 10px;
+	margin: 0 11px;
 }
 
 .modal .inner .stats h2 {
@@ -221,132 +223,195 @@ h1 {
 /* Animations */
 
 @-webkit-keyframes shake {
-	  0%, 100% {
-	  -webkit-transform: translate3d(0, 0, 0);
-	  transform: translate3d(0, 0, 0);
-	  }
-	  10%, 30%, 50%, 70%, 90% {
-	  -webkit-transform: translate3d(-10px, 0, 0);
-	  transform: translate3d(-10px, 0, 0);
-	  }
-	  20%, 40%, 60%, 80% {
-	  -webkit-transform: translate3d(10px, 0, 0);
-	  transform: translate3d(10px, 0, 0);
-	  }
+  0%, 100% {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   }
-  @keyframes shake {
-	  0%, 100% {
-	  -webkit-transform: translate3d(0, 0, 0);
-	  transform: translate3d(0, 0, 0);
-	  }
-	  10%, 30%, 50%, 70%, 90% {
-	  -webkit-transform: translate3d(-10px, 0, 0);
-	  transform: translate3d(-10px, 0, 0);
-	  }
-	  20%, 40%, 60%, 80% {
-	  -webkit-transform: translate3d(10px, 0, 0);
-	  transform: translate3d(10px, 0, 0);
-	  }
-  } 
-
-  @-webkit-keyframes flipInY {
-	  0% {
-	  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
-	  transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
-	  -webkit-transition-timing-function: ease-in;
-	  transition-timing-function: ease-in;
-	  opacity: 0;
-	  }
-	  40% {
-	  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
-	  transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
-	  -webkit-transition-timing-function: ease-in;
-	  transition-timing-function: ease-in;
-	  }
-	  60% {
-	  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
-	  transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
-	  opacity: 1;
-	  }
-	  80% {
-	  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
-	  transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
-	  }
-	  100% {
-	  -webkit-transform: perspective(400px);
-	  transform: perspective(400px);
-	  }
+  10%, 30%, 50%, 70%, 90% {
+  -webkit-transform: translate3d(-10px, 0, 0);
+  transform: translate3d(-10px, 0, 0);
   }
-  @keyframes flipInY {
-	  0% {
-	  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
-	  transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
-	  -webkit-transition-timing-function: ease-in;
-	  transition-timing-function: ease-in;
-	  opacity: 0;
-	  }
-	  40% {
-	  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
-	  transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
-	  -webkit-transition-timing-function: ease-in;
-	  transition-timing-function: ease-in;
-	  }
-	  60% {
-	  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
-	  transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
-	  opacity: 1;
-	  }
-	  80% {
-	  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
-	  transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
-	  }
-	  100% {
-	  -webkit-transform: perspective(400px);
-	  transform: perspective(400px);
-	  }
-  } 
+  20%, 40%, 60%, 80% {
+  -webkit-transform: translate3d(10px, 0, 0);
+  transform: translate3d(10px, 0, 0);
+  }
+}
+@keyframes shake {
+  0%, 100% {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+  -webkit-transform: translate3d(-10px, 0, 0);
+  transform: translate3d(-10px, 0, 0);
+  }
+  20%, 40%, 60%, 80% {
+  -webkit-transform: translate3d(10px, 0, 0);
+  transform: translate3d(10px, 0, 0);
+  }
+} 
 
-  @-webkit-keyframes tada {
-	  0% {
-	  -webkit-transform: scale3d(1, 1, 1);
-	  transform: scale3d(1, 1, 1);
-	  }
-	  10%, 20% {
-	  -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
-	  transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
-	  }
-	  30%, 50%, 70%, 90% {
-	  -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-	  transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-	  }
-	  40%, 60%, 80% {
-	  -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-	  transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-	  }
-	  100% {
-	  -webkit-transform: scale3d(1, 1, 1);
-	  transform: scale3d(1, 1, 1);
-	  }
-	  }
-	  @keyframes tada {
-	  0% {
-	  -webkit-transform: scale3d(1, 1, 1);
-	  transform: scale3d(1, 1, 1);
-	  }
-	  10%, 20% {
-	  -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
-	  transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
-	  }
-	  30%, 50%, 70%, 90% {
-	  -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-	  transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-	  }
-	  40%, 60%, 80% {
-	  -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-	  transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-	  }
-	  100% {
-	  -webkit-transform: scale3d(1, 1, 1);
-	  transform: scale3d(1, 1, 1);
-	  }
-  } 
+@-webkit-keyframes flipInY {
+  0% {
+  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+  transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+  -webkit-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  opacity: 0;
+  }
+  40% {
+  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+  transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+  -webkit-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  }
+  60% {
+  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+  transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+  opacity: 1;
+  }
+  80% {
+  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+  transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+  }
+  100% {
+  -webkit-transform: perspective(400px);
+  transform: perspective(400px);
+  }
+}
+@keyframes flipInY {
+  0% {
+  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+  transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+  -webkit-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  opacity: 0;
+  }
+  40% {
+  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+  transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+  -webkit-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  }
+  60% {
+  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+  transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+  opacity: 1;
+  }
+  80% {
+  -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+  transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+  }
+  100% {
+  -webkit-transform: perspective(400px);
+  transform: perspective(400px);
+  }
+} 
+
+@-webkit-keyframes tada {
+  0% {
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+  }
+  10%, 20% {
+  -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  }
+  30%, 50%, 70%, 90% {
+  -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+  40%, 60%, 80% {
+  -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+  100% {
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes tada {
+  0% {
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+  }
+  10%, 20% {
+  -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  }
+  30%, 50%, 70%, 90% {
+  -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+  40%, 60%, 80% {
+  -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+  100% {
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+  }
+} 
+
+  /* Media queries for mobile dvices*/
+@media screen and (min-width:330px) {
+  	.deck {
+		width: 330px;
+		min-height: 340px;
+  	}
+
+  	.deck .card {
+		height: 58px;
+	    width: 58px;
+  	}
+
+  	.deck .card.show {
+		font-size: 25px;
+  	}
+
+  	.deck .card.match {
+		font-size: 25px;
+  	}
+
+  	.deck .card.unmatch{
+		font-size: 25px;
+  	}
+
+  	.score-panel {
+  		text-align: left;
+  		font-size: 15px;
+  		width: 345px;
+  	}
+
+  	.score-panel .restart {
+	    float: right;
+	}
+
+	.score-panel .timer {
+		float: right;
+	}
+}
+@media screen and (min-width:660px) {
+  	.deck {
+		width: 660px;
+		min-height: 680px;
+  	}
+
+  	.deck .card {
+		height: 130px;
+	    width: 130px;
+  	}
+
+  	.deck .card.show {
+		font-size: 33px;
+  	}
+
+  	.deck .card.match {
+		font-size: 33px;
+  	}
+
+  	.deck .card.unmatch{
+		font-size: 33px;
+  	}	
+}
+
