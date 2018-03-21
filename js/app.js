@@ -45,10 +45,11 @@ function startGame() {
 	resetTimer();
 	resetCounter();
 	resetRating();
+	temp = [];
 	modalWindow.classList.remove("open");
 	cards = shuffle(cards);
 	for(let i = 0; i < cards.length; i++){
-		cards[i].classList.remove("open", "show", "match", "disabled");
+		cards[i].classList.remove("open", "show", "match", "unmatch", "disabled");
 		deck.appendChild(cards[i]);
 	}
 } 
@@ -170,3 +171,4 @@ function gameWin(){
 		finalTime.innerHTML = timerDisplay.innerHTML;
 	}
 }
+
