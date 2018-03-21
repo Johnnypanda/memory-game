@@ -1,29 +1,35 @@
 //start game after the page is loaded and reset if the restart button was clicked
 document.addEventListener("DOMContentLoaded", startGame);
+
 //selectors
-const deck = document.querySelector(".deck");
-const cardItem = document.getElementsByClassName("card");
-const matchedCards = document.getElementsByClassName("match");
-const restartBtn = document.querySelector(".restart");
-const movesCounter = document.querySelector(".moves");
-const timerDisplay = document.querySelector(".timer");
-const starItem = document.getElementsByClassName("fa-star");
-const starsContainer = document.querySelector(".stars");
-const modalWindow = document.querySelector(".modal");
-const finalTime = document.querySelector(".finalTime");
-const finalRating = document.querySelector(".finalRating");
-const finalBtn = document.querySelector(".btn");
-let cards = [...cardItem];
-let stars = [...starItem];
-let temp = [];
+const deck = document.querySelector(".deck"),
+cardItem = document.getElementsByClassName("card"),
+matchedCards = document.getElementsByClassName("match"),
+restartBtn = document.querySelector(".restart"),
+movesCounter = document.querySelector(".moves"),
+timerDisplay = document.querySelector(".timer"),
+starItem = document.getElementsByClassName("fa-star"),
+starsContainer = document.querySelector(".stars"),
+modalWindow = document.querySelector(".modal"),
+finalTime = document.querySelector(".finalTime"),
+finalRating = document.querySelector(".finalRating"),
+finalBtn = document.querySelector(".btn");
+
+//arrays
+let cards = [...cardItem],
+stars = [...starItem],
+temp = [];
+
 //counter and timer variables;
 let count = 0, moves = 0, sec = 0, min = 0, interval;
+
 //add event listeners to card elements
 for(let i = 0; i < cards.length; i++) {
 	cards[i].addEventListener("click", revealCard);
 	cards[i].addEventListener("click", compareCard);
 	cards[i].addEventListener("click", gameWin);
 }
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     let currentIndex = array.length, temporaryValue, randomIndex;
@@ -52,16 +58,19 @@ function startGame() {
 		cards[i].classList.remove("open", "show", "match", "unmatch", "disabled");
 		deck.appendChild(cards[i]);
 	}
-} 
+}
 
+//start and restart event listeners
 restartBtn.addEventListener("click", startGame);
 finalBtn.addEventListener("click", startGame);
+
 //comparison logic functions
 function revealCard(){
 	this.classList.add("open", "show", "disabled");
 	counter();
 }
 
+//compares cards added to the temp array
 function compareCard(){
 	temp.push(this);
 	len = temp.length;
@@ -126,8 +135,8 @@ function counter(){
 		} else if(moves === 20){
 			stars[2].style.color = "#333";
 		}
-	} 
-
+	}
+	//enable timer on the first click
 	if(count == 1){
 		timer();
 	}
@@ -138,6 +147,7 @@ function resetCounter(){
 	moves = 0;
 	movesCounter.innerHTML = moves;
 }
+
 //time measurement function
 function timer(){
     interval = setInterval(function(){
@@ -163,12 +173,15 @@ function resetRating(){
 	}
 }
 
+//reveals a modal on the end game
 function gameWin(){
 	if(matchedCards.length == 16){
-		modalWindow.classList.add("open");
 		clearInterval(interval);
 		finalRating.innerHTML = starsContainer.innerHTML;
 		finalTime.innerHTML = timerDisplay.innerHTML;
+		setTimeout(function() {
+			modalWindow.classList.add("open")
+		}, 1000);
 	}
 }
 

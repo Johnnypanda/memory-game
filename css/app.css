@@ -40,9 +40,9 @@ h1 {
 .deck {
     width: 250px;
     min-height: 260px;
-    background: #FC5C7D;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #6A82FB, #FC5C7D);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #6A82FB, #FC5C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #fc5c7d;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #6a82fb, #Fc5c7d);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #6a82fb, #fc5c7d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     padding: 25px;
     border-radius: 5px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
@@ -249,7 +249,7 @@ h1 {
   -webkit-transform: translate3d(10px, 0, 0);
   transform: translate3d(10px, 0, 0);
   }
-} 
+}
 
 @-webkit-keyframes flipInY {
   0% {
@@ -306,7 +306,7 @@ h1 {
   -webkit-transform: perspective(400px);
   transform: perspective(400px);
   }
-} 
+}
 
 @-webkit-keyframes tada {
   0% {
@@ -351,9 +351,9 @@ h1 {
   -webkit-transform: scale3d(1, 1, 1);
   transform: scale3d(1, 1, 1);
   }
-} 
+}
 
-  /* Media queries for mobile dvices*/
+  /* Media queries */
 @media screen and (min-width:330px) {
   	.deck {
 		width: 330px;
@@ -390,7 +390,12 @@ h1 {
 	.score-panel .timer {
 		float: right;
 	}
+
+	.modal .inner .stats {
+		margin: 0 auto;
+	}
 }
+
 @media screen and (min-width:660px) {
   	.deck {
 		width: 660px;
@@ -412,6 +417,6 @@ h1 {
 
   	.deck .card.unmatch{
 		font-size: 33px;
-  	}	
+  	}
 }
 
